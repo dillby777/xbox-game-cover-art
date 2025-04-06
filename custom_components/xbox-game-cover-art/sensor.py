@@ -8,7 +8,7 @@ from homeassistant.helpers.event import async_track_state_change_event
 _LOGGER = logging.getLogger(__name__)
 
 API_URL_TEMPLATE = "https://storeedgefd.dsx.mp.microsoft.com/v9.0/pages/pdp?market=US&locale=en-US&query={query}"
-XBOX_SEARCH_URL = "https://www.xbox.com/en-us/Search?q={query}"
+XBOX_SEARCH_URL = "https://www.xbox.com/en-US/search/results?q={query}"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
