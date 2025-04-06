@@ -1,5 +1,5 @@
 import logging
-import requests
+import aiohttp
 from bs4 import BeautifulSoup
 
 from homeassistant.helpers.entity import Entity
@@ -52,39 +52,42 @@ class XboxGameCoverSensor(Entity):
 
         # 1. Try API method first
         try:
-            api_url = API_URL_TEMPLATE.format(query=requests.utils.quote(query))
-            resp = requests.get(api_url, headers=HEADERS, timeout=10)
-            if resp.status_code == 200:
-                data = resp.json()
-                # The data format here may change, but let's try to extract something usable
-                for item in data.get("Products", []):
-                    if item.get("LocalizedProperties"):
-                        images = item["LocalizedProperties"][0].get("Images", [])
-                        for image in images:
-                            if image.get("ImagePurpose") == "BoxArt":
-                                self._state = image["Uri"]
-                                _LOGGER.info(f"Found box art from API: {self._state}")
-                                return
-                _LOGGER.info("No box art found in API response.")
-            else:
-                _LOGGER.warning(f"API returned status {resp.status_code}")
+            api_url = API_URL_TEMPLATE.format(query=aiohttp.helpers.quote(query))
+            async with aiohttp.ClientSession() as session:
+                async with session.get(api_url, headers=HEADERS, timeout=10) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        # The data format here may change, but let's try to extract something usable
+                        for item in data.get("Products", []):
+                            if item.get("LocalizedProperties"):
+                                images = item["LocalizedProperties"][0].get("Images", [])
+                                for image in images:
+                                    if image.get("ImagePurpose") == "BoxArt":
+                                        self._state = image["Uri"]
+                                        _LOGGER.info(f"Found box art from API: {self._state}")
+                                        return
+                        _LOGGER.info("No box art found in API response.")
+                    else:
+                        _LOGGER.warning(f"API returned status {resp.status}")
         except Exception as e:
             _LOGGER.warning(f"API call failed: {e}")
 
         # 2. Fallback to scraping xbox.com
         try:
-            search_url = XBOX_SEARCH_URL.format(query=requests.utils.quote(query))
-            resp = requests.get(search_url, headers=HEADERS, timeout=10)
-            soup = BeautifulSoup(resp.text, "html.parser")
+            search_url = XBOX_SEARCH_URL.format(query=aiohttp.helpers.quote(query))
+            async with aiohttp.ClientSession() as session:
+                async with session.get(search_url, headers=HEADERS, timeout=10) as resp:
+                    text = await resp.text()
+                    soup = BeautifulSoup(text, "html.parser")
 
-            img_tag = soup.select_one(".m-product-placement-item__img img")
+                    img_tag = soup.select_one(".m-product-placement-item__img img")
 
-            if img_tag and "src" in img_tag.attrs:
-                self._state = img_tag["src"]
-                _LOGGER.info(f"Fallback: Found cover art via scraping: {self._state}")
-            else:
-                _LOGGER.warning("Fallback: No image found via scraping.")
-                self._state = None
+                    if img_tag and "src" in img_tag.attrs:
+                        self._state = img_tag["src"]
+                        _LOGGER.info(f"Fallback: Found cover art via scraping: {self._state}")
+                    else:
+                        _LOGGER.warning("Fallback: No image found via scraping.")
+                        self._state = None
         except Exception as e:
             _LOGGER.error(f"Fallback scraping failed: {e}")
             self._state = None
