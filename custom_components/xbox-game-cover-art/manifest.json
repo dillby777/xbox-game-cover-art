@@ -1,11 +1,11 @@
 {
-    "domain": "xbox-game-cover-art",
-    "name": "Xbox Game Cover Sensor",
-    "version": "1.0.0",
-    "documentation": "https://github.com/dillby777/Xbox-game-cover-art",
-    "dependencies": [],
-    "codeowners": ["@dillby777"],
-    "requirements": ["requests", "beautifulsoup4"],
-    "iot_class": "cloud_polling"
-  }
-  
+  "domain": "xbox-game-cover-art",
+  "name": "Xbox Game Cover Art",
+  "version": "1.0.0",
+  "documentation": "https://github.com/dillby777/xbox-game-cover-art",
+  "config_flow": true,
+  "requirements": ["aiohttp"],
+  "codeowners": ["@dillby777"],
+  "iot_class": "cloud_polling",
+  "supported_platforms": ["sensor"]
+}

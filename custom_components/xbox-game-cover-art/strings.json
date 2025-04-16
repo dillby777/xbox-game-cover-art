@@ -1,0 +1,17 @@
+{
+    "title": "Xbox Game Cover Art",
+    "config": {
+      "step": {
+        "user": {
+          "title": "Configure IGDB and Xbox",
+          "description": "Enter your IGDB API credentials and comma-separated gamertags",
+          "data": {
+            "app_id": "IGDB App ID",
+            "api_secret": "IGDB API Secret",
+            "gamertags": "Xbox Gamertags"
+          }
+        }
+      }
+    }
+  }
+  
