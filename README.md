@@ -2,8 +2,6 @@
 
 A custom Home Assistant integration that shows cover art for the current Xbox game a user is playing using IGDB (Twitch) as a cover source.
 
-![Example Screenshot](https://user-images.githubusercontent.com/YOUR_IMAGE_URL_HERE)
-
 ## Features
 
 - Displays current Xbox game cover art for one or more Xbox Live users
@@ -12,20 +10,24 @@ A custom Home Assistant integration that shows cover art for the current Xbox ga
 - Periodically updates game art automatically
 
 ## Installation
+### HCAS:
+ 1. add this github repo url to HCAS custom repositories as intergration
 
+### Manual:
 1. **Copy Files**
    - Place this repo in `custom_components/xbox-game-cover-art` in your Home Assistant configuration directory.
 
 2. **Install Requirements**
    - No manual pip installs required. `aiohttp` will be auto-installed based on `manifest.json`.
-
-3. **Enable Integration**
+   
+### Configuration:
+1. **Enable Integration**
    - Go to **Settings → Devices & Services → Add Integration** and search for "Xbox Game Cover Art".
 
-4. **Configure**
+2. **Configure**
    - Input:
-     - Your **Twitch Client ID**
-     - Your **Twitch Client Secret**
+     - Your **IGDB (Twitch) Client ID**
+     - Your **IGDB (Twitch) Client Secret**
      - One or more Xbox Live gamer tags (comma-separated, e.g., `AGamer,BGamer`)
 
 ## Requirements
