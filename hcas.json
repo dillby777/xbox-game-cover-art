@@ -7,9 +7,6 @@
     "render_readme": true,
     "hide_default_branch": false,
     "zip_release": false,
-    "branding": {
-      "logo": "brands/xbox-game-cover-art/logo.png",
-      "icon": "brands/xbox-game-cover-art/icon.png"
-    }
+    "brand": "xbox"
   }
   
