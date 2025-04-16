@@ -3,6 +3,13 @@
     "content_in_root": false,
     "domains": ["xbox-game-cover-art"],
     "country": "us",
-    "homeassistant": "2023.0.0"
+    "homeassistant": "2023.0.0",
+    "render_readme": true,
+    "hide_default_branch": false,
+    "zip_release": false,
+    "branding": {
+      "logo": "brands/xbox-game-cover-art/logo.png",
+      "icon": "brands/xbox-game-cover-art/icon.png"
+    }
   }
   
