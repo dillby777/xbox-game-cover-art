@@ -26,7 +26,7 @@ A custom Home Assistant integration that shows cover art for the current Xbox ga
    - Input:
      - Your **Twitch Client ID**
      - Your **Twitch Client Secret**
-     - One or more Xbox Live gamer tags (comma-separated, e.g., `dillby777,AnotherGamer`)
+     - One or more Xbox Live gamer tags (comma-separated, e.g., `AGamer,BGamer`)
 
 ## Requirements
 
