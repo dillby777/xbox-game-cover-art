@@ -4,7 +4,7 @@ from .const import DOMAIN
 import logging
 
 _LOGGER = logging.getLogger(__name__)
-_LOGGER.warning("xbox-game-cover-art: __init__.py loaded")
+_LOGGER.warning("xbox_game_cover_art: __init__.py loaded")
 
 async def async_setup(hass: HomeAssistant, config: dict):
     return True

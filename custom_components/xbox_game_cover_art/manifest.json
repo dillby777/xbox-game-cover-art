@@ -1,8 +1,8 @@
 {
-  "domain": "xbox-game-cover-art",
+  "domain": "xbox_game_cover_art",
   "name": "Xbox Game Cover Art",
   "version": "1.0.0",
-  "documentation": "https://github.com/dillby777/xbox-game-cover-art",
+  "documentation": "https://github.com/dillby777/xbox_game_cover_art",
   "config_flow": true,
   "requirements": ["aiohttp"],
   "codeowners": ["@dillby777"],

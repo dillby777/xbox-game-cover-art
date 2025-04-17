@@ -7,7 +7,7 @@ from .const import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    #_LOGGER.warning("xbox-game-cover-art: sensor async_setup_entry called")
+    #_LOGGER.warning("xbox_game_cover_art: sensor async_setup_entry called")
     
     # Extract settings
     app_id = config_entry.data.get("app_id")

@@ -15,7 +15,7 @@ A custom Home Assistant integration that shows cover art for the current Xbox ga
 
 ### Manual:
 1. **Copy Files**
-   - Place this repo in `custom_components/xbox-game-cover-art` in your Home Assistant configuration directory.
+   - Place this repo in `custom_components/xbox_game_cover_art` in your Home Assistant configuration directory.
 
 2. **Install Requirements**
    - No manual pip installs required. `aiohttp` will be auto-installed based on `manifest.json`.

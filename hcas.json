@@ -1,7 +1,7 @@
 {
     "name": "Xbox Game Cover Sensor",
     "content_in_root": false,
-    "domains": ["xbox-game-cover-art"],
+    "domains": ["xbox_game_cover_art"],
     "country": "us",
     "homeassistant": "2023.0.0",
     "render_readme": true,
